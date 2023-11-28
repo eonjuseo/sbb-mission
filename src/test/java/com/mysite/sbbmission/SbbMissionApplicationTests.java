@@ -4,6 +4,7 @@ import com.mysite.sbbmission.answer.Answer;
 import com.mysite.sbbmission.answer.AnswerRepository;
 import com.mysite.sbbmission.question.Question;
 import com.mysite.sbbmission.question.QuestionRepository;
+import com.mysite.sbbmission.question.QuestionService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,18 @@ class SbbApplicationTests {
 
     @Autowired
     private AnswerRepository answerRepository;
+
+    @Autowired
+    private QuestionService questionService;
+
+    @Test
+    void testJpa() {
+        for (int i = 1; i <= 300; i++) {
+            String subject = String.format("테스트 데이터입니다:[%03d]", i);
+            String content = "내용무";
+            this.questionService.create(subject, content);
+        }
+    }
 
     @Test
     void testQuestionCreate() {
