@@ -1,6 +1,7 @@
 package com.mysite.sbbmission.question;
 
 import com.mysite.sbbmission.answer.Answer;
+import com.mysite.sbbmission.user.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,4 +27,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
     private List<Answer> answerList;
+
+    @ManyToOne
+    private SiteUser author; //여러개의 질문이 한 명의 사용자에게 작성
 }
