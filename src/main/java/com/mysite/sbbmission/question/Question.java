@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -32,4 +33,7 @@ public class Question {
 
     @ManyToOne
     private SiteUser author; //여러개의 질문이 한 명의 사용자에게 작성
+
+    @ManyToMany
+    Set<SiteUser> voter;
 }
